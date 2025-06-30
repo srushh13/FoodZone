@@ -3,7 +3,7 @@ import { FILTERS_URL, IMG_URL } from "../constants,js"
 const RestaurantCard = ({ name, avgRating, sla, cuisines, locatlity, cloudinaryImageId, text, imageId }) => {
   return (
     <>
-      {/* Category carousel card */}
+      
       {imageId && (
          <div className="text-center w-[150px]">
             <div className="w-30 h-30 mx-auto overflow-hidden rounded-full">
@@ -13,7 +13,7 @@ const RestaurantCard = ({ name, avgRating, sla, cuisines, locatlity, cloudinaryI
         </div>
 )}
 
-      {/* Restaurant grid card */}
+     
       {cloudinaryImageId && (
             <div className="w-full max-w-[230px] pt-15">
                 <div className="w-full rounded-xl">
