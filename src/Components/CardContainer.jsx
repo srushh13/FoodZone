@@ -6,6 +6,8 @@ import { API_URL } from "../constants,js"
 
 const CardContainer = () => {
     const [restaurantData,setrestaurantData] = useState([])
+    const [imagesData, setimagesData] = useState([])
+
 
     
 
@@ -95,6 +97,28 @@ useEffect(() => {
 
 
     // ]
+    const carouselData = async() =>{
+        try{
+            const data = await fetch(API_URL)
+            const json = await data.json();
+            console.log("json",json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info)
+            setimagesData(json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info)
+        }
+        catch(err){
+            console.log("error",err)
+        }
+    }
+ 
+
+useEffect(() => {
+    carouselData()
+},[])
+
+
+
+
+
+
 
 
 
@@ -102,7 +126,22 @@ useEffect(() => {
 
     return(
         <>
-        <div className="p-3 grid grid-cols-4 gap-10 container mx-auto max-w-[1200px]">
+        <div className="overflow-x-auto whitespace-nowrap flex gap-7 px-4 py-2 w-[1200px] container mx-auto">
+            {
+                imagesData.map((info, index) => (
+                <div key={info?.id} className="inline-block">
+                    <RestaurantCard {...info} />
+                </div>
+                ))
+            }
+        </div>
+
+
+
+
+
+
+        <div className="p-3 grid grid-cols-4 gap-16 container mx-auto max-w-[1200px]">
             {
                 restaurantData.map((restaurant, index) => {
                     return(
@@ -117,9 +156,12 @@ useEffect(() => {
                 })
             }
             
+          
             
 
         </div>
+
+       
         </>
     )
 }
