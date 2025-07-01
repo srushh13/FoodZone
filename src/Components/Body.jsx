@@ -1,6 +1,6 @@
 import Searchbar from "./Searchbar"
 import Filters from "./Filters"
-import CardContainer from "./Cardcontainer"
+import CardContainer from "./CardContainer"
 
 const Body = () => {
     return(

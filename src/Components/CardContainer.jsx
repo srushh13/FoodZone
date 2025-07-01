@@ -1,6 +1,6 @@
 import RestaurantCard from "./RestaurantCard"
 import {useState , useEffect} from 'react'
-import { API_URL } from "../constants,js"
+import { API_URL } from "../constants.js"
 
 
 
@@ -166,4 +166,4 @@ useEffect(() => {
     )
 }
 
-export default CardContainer
+export default CardContainer;

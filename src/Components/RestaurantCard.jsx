@@ -1,4 +1,4 @@
-import { FILTERS_URL, IMG_URL } from "../constants,js"
+import { FILTERS_URL, IMG_URL } from "../constants.js"
 
 const RestaurantCard = ({ name, avgRating, sla, cuisines, locatlity, cloudinaryImageId, text, imageId }) => {
   return (
