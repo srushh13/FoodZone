@@ -4,7 +4,7 @@ import { API_URL } from "../constants,js"
 
 
 
-const Cardcontainer = () => {
+const CardContainer = () => {
     const [restaurantData,setrestaurantData] = useState([])
     const [imagesData, setimagesData] = useState([])
 
@@ -166,4 +166,4 @@ useEffect(() => {
     )
 }
 
-export default Cardcontainer
+export default CardContainer

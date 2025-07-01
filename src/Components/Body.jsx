@@ -1,6 +1,6 @@
 import Searchbar from "./Searchbar"
 import Filters from "./Filters"
-import Cardcontainer from "./Cardcontainer"
+import CardContainer from "./Cardcontainer"
 
 const Body = () => {
     return(
@@ -11,7 +11,7 @@ const Body = () => {
                     <Searchbar/>
                     <Filters/>
                 </div>
-                <Cardcontainer/> 
+                <CardContainer/> 
                 
             </div>
 
