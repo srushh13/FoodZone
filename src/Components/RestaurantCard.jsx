@@ -20,12 +20,12 @@ const RestaurantCard = ({ name, avgRating, sla, cuisines, locatlity, cloudinaryI
 
      
       {cloudinaryImageId && (
-            <div className="w-full max-w-[230px] pt-15">
+            <div className="w-full max-w-[230px]">
                 <div className="w-full rounded-xl">
-                    <img src={`${IMG_URL + cloudinaryImageId}`} className="w-full h-40 object-cover rounded-xl" alt="restaurant "/>
+                    <img src={`${IMG_URL + cloudinaryImageId}`} className="w-full h-45 object-cover rounded-xl" alt="restaurant "/>
                 </div>
             <div className="mt-2">
-                <h3 className="font-semibold text-lg">{name}</h3>
+                <h3 className="font-bold text-lg">{name}</h3>
                 <div className="flex gap-8 font-medium">
                     <p>⭐{avgRating}</p>
                     <p>{sla?.slaString}</p>
