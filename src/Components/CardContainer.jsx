@@ -143,14 +143,16 @@
         return(
             <>
 
-            <div className="mx-20">
-                <input type = "text" onChange={(e) => setSearchText(e.target.value.toLowerCase())} className="w-full max-w-[400px] p-1 border border-gray-400 rounded-2xl hover:border-orange-400 mx-2" placeholder="  Enter your item..."/>
-                <button onClick={handleSearch}  className="bg-orange-300 rounded-2xl p-1 hover:bg-red-400 m-auto">🔍Search</button>
+            <div className="mx-20 m-2">
+                <input type = "text" onChange={(e) => setSearchText(e.target.value.toLowerCase())} className="w-full max-w-[450px] p-1 border border-gray-400 rounded-2xl hover:border-orange-400 mx-2" placeholder="  Enter your item..."/>
+                <button onClick={handleSearch}  className="bg-orange-300 rounded-2xl p-1 hover:bg-red-400 m-auto cursor-pointer">🔍Search</button>
             </div>
 
-
+<div>
+    <h1 className = "font-semibold top-10/12 translate-y-11/12 mx-20">What's on your mind ?</h1>
+</div>
             <div className="relative container mx-auto px-4 my-5">
-                <button onClick={handleLeft} className="absolute top-1/2  -translate-y-1/2 bg-white p-2 shadow rounded-full hover:bg-gray-200">
+                <button onClick={handleLeft} className="absolute top-1/2  -translate-y-1/2 bg-white p-2 shadow rounded-full hover:bg-gray-200 cursor-pointer">
                 <i className="fa-solid fa-arrow-left"></i>
                 </button>
         
@@ -163,14 +165,19 @@
                     ))
                 }
             
-                <button onClick={handleRight}  className="absolute right-0 top-1/2  -translate-y-1/2 bg-white p-2 shadow rounded-full z-10 hover:bg-gray-200">
+                <button onClick={handleRight}  className="absolute right-0 top-1/2  -translate-y-1/2 bg-white p-2 shadow rounded-full z-10 hover:bg-gray-200 cursor-pointer">
                 <i className="fa-solid fa-arrow-right"></i>
                 </button>
         </div>
         </div>
 
+
+        <div>
+           <h1 className="font-bold top-10/12 translate-y-11/12 mx-10 m-7 text-xl"> Top Restaurants in Mumbai</h1>
+        </div>
+
             {fillteredData && (
-                <div className="p-3 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-13 container mx-auto">
+                <div className="p-3 m-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-13 container mx-auto">
 
                 {
                     fillteredData.map((restaurant, index) => {
