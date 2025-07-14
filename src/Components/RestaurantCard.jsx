@@ -3,18 +3,18 @@ import { FILTERS_URL, IMG_URL } from "../constants.js";
 const RestaurantCard = ({name, avgRating, sla, cuisines, locatlity, cloudinaryImageId, text, imageId,}) => {
   return (
     <>
-      {/* Category Carousel Card */}
+      
       {imageId && (
         <div className="text-center w-[120px] sm:w-[140px] md:w-[150px] mx-auto hover:scale-[1.05] ">
           <div className="w-28 h-28 sm:w-32 sm:h-32 mx-auto md:overflow-hidden sm:overflow-hidden">
             <img src={`${FILTERS_URL + imageId}`}
-              className="w-full h-full object-cover" alt={text}/>
+              className="w-35 h-full object-contain" alt={text}/>
           </div>
-          <h4 className="mt-2 text-sm font-semibold text-gray-700">{text}</h4>
+          <h4 className="mt-2 text-sm font-semibold">{text}</h4>
         </div>
       )}
 
-      {/* Restaurant Info Card */}
+      
       {cloudinaryImageId && (
         <div className="w-full bg-white rounded-xl shadow-md overflow-hidden hover:scale-[1.06]">
           <img src={`${IMG_URL + cloudinaryImageId}`} className="w-full h-48 object-cover" alt="restaurant"/>
