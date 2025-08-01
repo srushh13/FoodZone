@@ -183,9 +183,10 @@
         return(
             <>
 
-            <div className="mx-20 m-2">
-                <input type = "text" onChange={(e) => setSearchText(e.target.value.toLowerCase())} className="w-full max-w-[500px] p-1 border border-gray-400 rounded-2xl hover:border-orange-400 mx-2  " placeholder="  Enter your item..."/>
-                <button onClick={handleSearch}  className="bg-orange-300 rounded-2xl p-1 hover:bg-red-400 m-auto cursor-pointer">🔍Search</button>
+            <div className="flex items-center justify-center gap-2 mx-4 my-6">
+                <input type = "text" onChange={(e) => setSearchText(e.target.value.toLowerCase())} 
+                className="w-full max-w-md px-4 py-2 border border-gray-300 hover:border-orange-400 focus:outline-none focus:border-amber-600 rounded-full shadow-sm text-sm " placeholder="  Enter your item..."/>
+                <button onClick={handleSearch}  className="bg-orange-400 hover:bg-orange-500 text-white p-2 rounded-full shadow-md ">🔍</button>
             </div>
 
             <div>

@@ -1,5 +1,6 @@
 import { FILTERS_URL, IMG_URL } from "../constants.js";
 import { Link } from "react-router";
+import { modifyString } from "../utils/helper.js";
 
 
 const RestaurantCard = ({name, avgRating, sla, cuisines, locatlity, cloudinaryImageId, text, imageId,id}) => {
@@ -16,7 +17,7 @@ const RestaurantCard = ({name, avgRating, sla, cuisines, locatlity, cloudinaryIm
         </div>
       )}
 
-      <Link to={`/restaurant/${name}-rest${id}`}>
+      <Link to={`/restaurant/${modifyString(name)}-rest${id}`}>
       {cloudinaryImageId && (
         <div className="w-full bg-white rounded-xl shadow-md overflow-hidden hover:scale-[1.06]">
           <img src={`${IMG_URL + cloudinaryImageId}`} className="w-full h-48 object-cover" alt="restaurant"/>
