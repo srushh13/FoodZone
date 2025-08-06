@@ -2,7 +2,7 @@ const ShimmerCard = () => {
     return(
         <>
                 
-                    <div className="w-full bg-gray-100 rounded-xl shadow-lg  hover:scale-[1.06] max-w-[250px]">
+                    <div className="w-full bg-gray-100 rounded-xl shadow-lg  hover:scale-[1.06] max-w-[250px] animate-pulse">
                       <div className="w-full h-48 object-cover bg-gray-200"></div>
                       <div className="p-3 ">
                         <h3 className="font-bold  m-2 "></h3>

@@ -2,7 +2,7 @@ const MenuContainer = ({name, avgRating, cuisines, locality, totalRatingsString}
     return(
         <>
 
-        <div className="max-w-3xl mx-auto text-2xl p-2">
+        <div className="max-w-3xl mx-auto text-2xl p-2 mb-4">
             <h2 className="text-3xl font-bold">{name}</h2>
         </div>
 

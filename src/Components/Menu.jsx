@@ -2,13 +2,17 @@ import { useParams } from "react-router"
 import { extractResId, CreateUrl } from "../utils/helper"
 import { useEffect ,useState } from "react"
 import MenuContainer from "./MenuContainer"
+import Category from "./Category"
 
 
-const Menu = ()=>{
+const Menu = () =>{
     const Params = useParams()
     console.log("useParams",Params);
 
-    const [normalMenu, setNormalMenu] = useState(null)
+    const [resInfo, setResInfo] = useState(null)
+    const[normalMenu, setNormalMenu] = useState([])
+    // const[nestedMenu,setNestedMenu] = useState([])
+    
 
     const getMenuData = async () => {
     try{
@@ -19,8 +23,20 @@ const Menu = ()=>{
             throw new Error('Something Went Wrong')
         }
         const json = await response.json()
-        console.log("json",json?.data?.cards[2].card?.card?.info)
-        setNormalMenu(json?.data?.cards[2].card?.card?.info)
+        console.log("json",json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards)
+        setResInfo(json?.data?.cards[2].card?.card?.info)
+
+        const collection = json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+        const categoryList = collection.filter((item)=>item?.card?.card["@type"]==='type.googleapis.com/swiggy.presentation.food.v2.ItemCategory');
+        const nestedCategoryList = collection.filter((item)=>item?.card?.card["@type"]==='type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory');
+        setNormalMenu(categoryList)
+        
+        console.log("catergoryList",categoryList);
+        console.log("nestedcatergoryList",nestedCategoryList);
+
+        
+
+
     }
     catch(err){
         console.log("error",err)
@@ -34,11 +50,21 @@ useEffect(() =>{
 
     return(
         <div>
-            {normalMenu && (
+            
                 <MenuContainer
-                    {...normalMenu}
+                    {...resInfo}
                 />
-            )}
+
+                {
+                    normalMenu.map((menuitem,index)=>{
+                        return(
+                            <Category title={menuitem?.card?.card?.title}
+                            collection={menuitem?.card?.card?.itemCards}
+                            key={index}/>
+                        )
+                    })
+                }
+            
         </div>
     )
 }
