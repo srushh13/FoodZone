@@ -3,7 +3,7 @@ import {Link} from 'react-router';
 
 const Header = () => {
   return (
-    <div className="flex justify-between items-center w-full px-6 py-3 shadow-lg bg-orange-100">
+    <div className="flex justify-between items-center w-full px-6 py-3 shadow-xl bg-orange-100">
       
       <Link to="/">
         <img src={logo} alt="Logo" className="h-16 w-auto object-contain" />

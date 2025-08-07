@@ -11,7 +11,7 @@ const Menu = () =>{
 
     const [resInfo, setResInfo] = useState(null)
     const[normalMenu, setNormalMenu] = useState([])
-    // const[nestedMenu,setNestedMenu] = useState([])
+    const[nestedMenu,setNestedMenu] = useState([])
     
 
     const getMenuData = async () => {
@@ -30,6 +30,7 @@ const Menu = () =>{
         const categoryList = collection.filter((item)=>item?.card?.card["@type"]==='type.googleapis.com/swiggy.presentation.food.v2.ItemCategory');
         const nestedCategoryList = collection.filter((item)=>item?.card?.card["@type"]==='type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory');
         setNormalMenu(categoryList)
+        setNestedMenu(nestedCategoryList)
         
         console.log("catergoryList",categoryList);
         console.log("nestedcatergoryList",nestedCategoryList);
@@ -65,6 +66,21 @@ useEffect(() =>{
                     })
                 }
             
+
+                {
+                    nestedMenu.map((nestedmenu)=>{
+                        
+                        return(
+                            <Category 
+                            collection={nestedmenu?.card?.card?.categories}
+                            title={nestedmenu?.card?.card?.title}
+                            
+                            />
+                        )
+                    })
+                }
+
+                
         </div>
     )
 }

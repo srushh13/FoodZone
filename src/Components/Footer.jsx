@@ -30,6 +30,9 @@ const Footer  = () => {
                     <i className="fa-brands fa-linkedin"></i>
                     <i className="fa-brands fa-twitter"></i>
                 </div>
+
+                <p className="text-sm text-gray-500 mt-4">&copy; 2025 FoodZone. All rights reserved.</p>
+
             </div>
 
         </div>

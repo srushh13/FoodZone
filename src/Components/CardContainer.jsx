@@ -183,11 +183,18 @@
         return(
             <>
 
-            <div className="flex items-center justify-center gap-2 mx-4 my-6">
-                <input type = "text" onChange={(e) => setSearchText(e.target.value.toLowerCase())} 
-                className="w-full max-w-md px-4 py-2 border border-gray-300 hover:border-orange-400 focus:outline-none focus:border-amber-600 rounded-full shadow-sm text-sm " placeholder="  Enter your item..."/>
-                <button onClick={handleSearch}  className="bg-orange-400 hover:bg-orange-500 text-white p-2 rounded-full shadow-md ">🔍</button>
+            <div className="flex items-center gap-2 mx-6 my-6 px-10">
+                <input type="text" onChange={(e) => setSearchText(e.target.value.toLowerCase())}
+                    className="w-full max-w-md px-5 py-3 rounded-full border border-gray-300 shadow-md placeholder:text-gray-500 placeholder:font-medium text-sm focus:outline-none focus:border-orange-500 transition-all duration-200"
+                    placeholder="Search for your favorite food..."/>
+                <button
+                    onClick={handleSearch}
+                    className="bg-orange-500 hover:bg-orange-600 text-white text-md px-4 py-3 rounded-full shadow-md transition-all duration-200 hover:scale-105">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
             </div>
+
+
 
             <div>
                 <h1 className = "font-semibold top-10/12 translate-y-11/12 mx-20">What's on your mind ?</h1>
@@ -214,8 +221,8 @@
             </div>
 
 
-            <div>
-                <h1 className="font-bold top-10/12 translate-y-11/12 mx-10 m-7 text-xl"> Top Restaurants chain in Mumbai</h1>
+            <div className="p-5">
+                <h1 className="font-bold top-10/12 translate-y-11/12 mx-5 text-xl text-gray-800"> Top Restaurants chain in Mumbai</h1>
             </div>
 
             {fillteredData.length === 0 ? <h1>No Restaurant's match found</h1>: (
