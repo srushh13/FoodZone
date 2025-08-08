@@ -3,6 +3,7 @@ import { extractResId, CreateUrl } from "../utils/helper"
 import { useEffect ,useState } from "react"
 import MenuContainer from "./MenuContainer"
 import Category from "./Category"
+import NestedCategory from "./NestedCategory"
 
 
 const Menu = () =>{
@@ -23,7 +24,7 @@ const Menu = () =>{
             throw new Error('Something Went Wrong')
         }
         const json = await response.json()
-        console.log("json",json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards)
+        console.log("json",json?.data?.cards[2])
         setResInfo(json?.data?.cards[2].card?.card?.info)
 
         const collection = json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
@@ -34,10 +35,6 @@ const Menu = () =>{
         
         console.log("catergoryList",categoryList);
         console.log("nestedcatergoryList",nestedCategoryList);
-
-        
-
-
     }
     catch(err){
         console.log("error",err)
@@ -64,23 +61,18 @@ useEffect(() =>{
                             key={index}/>
                         )
                     })
-                }
-            
+                }           
 
                 {
-                    nestedMenu.map((nestedmenu)=>{
-                        
+                    nestedMenu.map((nestedCategory,index)=>{
                         return(
-                            <Category 
-                            collection={nestedmenu?.card?.card?.categories}
-                            title={nestedmenu?.card?.card?.title}
-                            
-                            />
+                            <NestedCategory
+                            mainCategory={nestedCategory?.card?.card?.title}
+                            categoryCollection={nestedCategory?.card?.card?.categories}
+                            key={index}/>
                         )
                     })
                 }
-
-                
         </div>
     )
 }

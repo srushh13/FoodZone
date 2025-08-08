@@ -164,9 +164,7 @@
         if(isloading){
             return (
             <>
-                <div>
-                    <h1>Looking for best food nearby you...</h1>
-                </div>
+                
                 <div className="p-3 m-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-13 container mx-auto">
                         {new Array(20).fill(0).map((item, index) =>{
                             return  <ShimmerCard key = {index}/>
