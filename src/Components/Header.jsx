@@ -3,14 +3,14 @@ import {Link} from 'react-router';
 
 const Header = () => {
   return (
-    <div className="flex justify-between items-center w-full px-6 py-3 shadow-xl bg-orange-100">
+    <div className="flex justify-between items-center w-full p-1 shadow-xl bg-orange-100">
       
       <Link to="/">
-        <img src={logo} alt="Logo" className="h-16 w-auto object-contain hover:scale-[1.20]" />
+        <img src={logo} alt="Logo" className="h-20 w-auto object-contain hover:scale-[1.20] px-2" />
       </Link>
 
       
-      <div className=" flex gap-4 font-semibold text-green-800">
+      <div className=" flex gap-4 font-semibold text-green-900">
         <Link to="/" 
         className="hover:text-orange-600 hover:underline underline-offset-4 transition-all px-3 py-2 cursor-pointer">Home
         </Link>

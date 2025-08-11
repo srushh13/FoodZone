@@ -2,21 +2,19 @@
     import {useState , useEffect} from 'react'
     import { API_URL } from "../constants.js"
     import ShimmerCard from "./Shimmer.jsx"
+    import Searchbar from "./Searchbar.jsx"
 
 
     const CardContainer = () => {
         const [restaurantData,setRestaurantData] = useState([])
         const [fillteredData,setFilteredData] = useState([])
         const [imagesData, setimagesData] = useState([])
-        const [searchText, setSearchText] = useState([])
         const [isloading, setIsLoading] = useState(true)
         const [errorMessage, setErrorMessage] = useState("")
         const [index, setIndex] = useState(0);
-        const itemsToShow = 7;
-
+        const itemsToShow = 7;  
         
-
-    const handleLeft = () => {
+        const handleLeft = () => {
             if (index > 0) {
             setIndex(index - 1);
     }
@@ -52,7 +50,6 @@
                 const json = await response.json();
                 console.log("json",json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
                 setFilteredData(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-
                 setRestaurantData(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
             }
@@ -68,76 +65,6 @@
         getData()
     },[])
 
-
-        // const resData = [
-        //     {
-        //     title : "mcdonalds",
-        //     rating :"4.2",
-        //     deliveryTime : "20-25min",
-        //     cuisines : "buerger",
-        //     location: "bhandup"
-
-        //     },
-
-        //     {
-        //     title : "mcdonalds",
-        //     rating :"4.2",
-        //     deliveryTime : "20-25min",
-        //     cuisines : "buerger",
-        //     location: "bhandup"
-
-        //     },
-        //     {
-        //     title : "mcdonalds",
-        //     rating :"4.2",
-        //     deliveryTime : "20-25min",
-        //     cuisines : "buerger",
-        //     location: "bhandup"
-
-        //     },
-        //     {
-        //     title : "mcdonalds",
-        //     rating :"4.2",
-        //     deliveryTime : "20-25min",
-        //     cuisines : "buerger",
-        //     location: "bhandup"
-
-        //     },
-        //     {
-        //     title : "mcdonalds",
-        //     rating :"4.2",
-        //     deliveryTime : "20-25min",
-        //     cuisines : "buerger",
-        //     location: "bhandup"
-
-        //     },
-        //     {
-        //     title : "mcdonalds",
-        //     rating :"4.2",
-        //     deliveryTime : "20-25min",
-        //     cuisines : "buerger",
-        //     location: "bhandup"
-
-        //     },
-        //     {
-        //     title : "mcdonalds",
-        //     rating :"4.2",
-        //     deliveryTime : "20-25min",
-        //     cuisines : "buerger",
-        //     location: "bhandup"
-
-        //     },
-        //     {
-        //     title : "mcdonalds",
-        //     rating :"4.2",
-        //     deliveryTime : "20-25min",
-        //     cuisines : "buerger",
-        //     location: "bhandup"
-
-        //     }
-
-
-        // ]
         const carouselData = async() =>{
             try{
                 const data = await fetch(API_URL)
@@ -153,19 +80,11 @@
     useEffect(() => {
         carouselData()
     },[])
-
-    const handleSearch = () =>{
-            const newArray = restaurantData?.filter(restaurant => restaurant?.info?.name.toLowerCase().includes(searchText));
-            console.log("newArray",newArray)
-            setFilteredData(newArray)
-        }
-
-        
+  
         if(isloading){
             return (
             <>
-                
-                <div className="p-3 m-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-13 container mx-auto">
+                 <div className="p-3 m-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-13 container mx-auto">
                         {new Array(20).fill(0).map((item, index) =>{
                             return  <ShimmerCard key = {index}/>
                         })}
@@ -180,19 +99,11 @@
 
         return(
             <>
-
-            <div className="flex items-center gap-2 mx-6 my-6 px-10">
-                <input type="text" onChange={(e) => setSearchText(e.target.value.toLowerCase())}
-                    className="w-full max-w-md px-5 py-3 rounded-full border border-gray-300 shadow-md placeholder:text-gray-500 placeholder:font-medium text-sm focus:outline-none focus:border-orange-500 transition-all duration-200"
-                    placeholder="Search for your favorite food..."/>
-                <button
-                    onClick={handleSearch}
-                    className="bg-orange-500 hover:bg-orange-600 text-white text-md px-4 py-3 rounded-full shadow-md transition-all duration-200 hover:scale-105">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
+            <div>
+               <Searchbar
+               data={restaurantData}
+               updater={setFilteredData}/> 
             </div>
-
-
 
             <div>
                 <h1 className = "font-semibold top-10/12 translate-y-11/12 mx-20">What's on your mind ?</h1>
@@ -223,7 +134,16 @@
                 <h1 className="font-bold top-10/12 translate-y-11/12 mx-5 text-xl text-gray-800"> Top Restaurants chain in Mumbai</h1>
             </div>
 
-            {fillteredData.length === 0 ? <h1>No Restaurant's match found</h1>: (
+            {fillteredData.length === 0 ? 
+            <div className="m-auto flex flex-col items-center justify-center p-20">
+                <h1 className="text-3xl font-bold text-gray-800 mb-2 animate-pulse">Oops! Nothing here...</h1>
+                <h1 className="text-lg font-medium text-gray-600 "> We couldn't find any restaurants matching your search.</h1>
+                <button
+                onClick={() => setFilteredData(restaurantData)} // Reset search
+                className="mt-6 border border-orange-500 text-orange-500 px-6 py-2 rounded-full hover:bg-orange-500 hover:text-white transition duration-300">
+                View All Restaurants
+                </button>
+            </div>: (
                 <div className="p-3 m-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-13 container mx-auto">
 
                 {
